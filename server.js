@@ -41,13 +41,12 @@ app.use("/api/todos", todoRoutes);
 app.get('/', (req, res) => {res.send('Hello World!')})
 
 //Heroku watching for production build
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    const __dirname = path.dirname(new URL(import.meta.url).pathname);
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
+app.use(express.static("client/build"));
+app.get("*", (req, res) => {
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
+
 
 //app listening
 app.listen(SERVER_PORT, ()=>{console.log(`Server running at ${SERVER_PORT}`)})
