@@ -38,7 +38,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
 
 //basic greeting
-app.get('/', (req, res) => {res.send('Hello World!')})
+// app.get('/', (req, res) => {res.send('Hello World!')})
 
 //Heroku deployment
 if (process.env.NODE_ENV === "production") {
@@ -46,6 +46,10 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     const __dirname = path.dirname(new URL(import.meta.url).pathname);
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}else{
+  app.get("/", (req, res) => {
+    res.send("API is running..");
   });
 }
 
