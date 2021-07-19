@@ -6,18 +6,17 @@ import morgan from 'morgan'
 import path from 'path'
 import dotenv from 'dotenv'
 
-dotenv.config();
-
 //initalize express
 const app = express()
-
-//initalize port
-const SERVER_PORT = process.env.PORT || 5002;
 
 //initalize middleware
 app.use(express.json({ extended: false }));
 app.use(cors());
 app.use(morgan(':method :url :response-time'))
+dotenv.config();
+
+//initalize port
+const SERVER_PORT = process.env.PORT || 5002;
 
 //MonogoDB connect
 mongoose.connect(process.env.MONGO_URL, {
@@ -36,9 +35,6 @@ import todoRoutes from "./routes/todos.js";
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
-
-//basic greeting
-// app.get('/', (req, res) => {res.send('Hello World!')})
 
 //Heroku deployment
 if (process.env.NODE_ENV === "production") {

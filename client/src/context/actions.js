@@ -1,6 +1,9 @@
+//import libraries
 import axios from "axios";
 
+//import token
 import setAuthToken from "../utils/setAuthToken";
+
 export const register = async (dispatch, formData) => {
   const config = {
     headers: {
@@ -81,6 +84,7 @@ export const loadTodos = async (dispatch) => {
     console.log(err);
   }
 };
+
 export const deleteTodo = async (dispatch, id) => {
   try {
     await axios.delete(`/api/todos/${id}`);
@@ -89,6 +93,7 @@ export const deleteTodo = async (dispatch, id) => {
     console.log(err);
   }
 };
+
 export const updateTodo = async (dispatch, id, formData) => {
   try {
     await axios.put(`/api/todos/${id}`, formData);
