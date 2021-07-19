@@ -22,8 +22,9 @@ app.use(morgan(':method :url :response-time'))
 //MonogoDB connect
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
 }).then(console.log("Connected to MongoDB")).catch((err)=>{console.log(err)})
 
 //import routes

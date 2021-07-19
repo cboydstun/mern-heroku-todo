@@ -1,7 +1,7 @@
 {
   "name": "mern-heroku-todo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/cboydstun/mern-heroku-todo.git",
   "author": "Chris Boydstun <52934303+cboydstun@users.noreply.github.com>",
   "license": "MIT",
@@ -14,12 +14,16 @@
   },
   "type": "module",
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-validator": "^6.12.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.3",
     "morgan": "^1.10.0"
   }
