@@ -1,0 +1,26 @@
+{
+  "name": "mern-heroku-todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cboydstun/mern-heroku-todo.git",
+  "author": "Chris Boydstun <52934303+cboydstun@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0"
+  }
+}
