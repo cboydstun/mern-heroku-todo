@@ -28,8 +28,14 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(console.log("Connected to MongoDB")).catch((err)=>{console.log(err)})
 
 //import routes
+import userRoutes from "./routes/users.js";
+import authRoutes from "./routes/auth.js";
+import todoRoutes from "./routes/todos.js";
 
 //initalize routes
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/todos", todoRoutes);
 
 //basic greeting
 app.get('/', (req, res) => {res.send('Hello World!')})
