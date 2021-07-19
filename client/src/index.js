@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+import { UserStateProvider } from "./context/StateProvider";
+import reducer, { initialState } from "./context/reducer";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <UserStateProvider initialState={initialState} reducer={reducer}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </UserStateProvider>,
+  document.getElementById("root")
 );
