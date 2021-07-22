@@ -1,6 +1,9 @@
+//import dependencies
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+//import context
 import { useStateValue } from "../context/StateProvider";
 
 const NavbarComponent = () => {
@@ -17,6 +20,7 @@ const NavbarComponent = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
+
           {!authenticated && (
             <>
               <Link className="ml-auto " to="/login">
@@ -27,6 +31,7 @@ const NavbarComponent = () => {
               </Link>
             </>
           )}
+
           {authenticated && (
             <Link className="ml-auto mt-2 mt-sm-0" to="/login">
               <Button
@@ -39,6 +44,7 @@ const NavbarComponent = () => {
               </Button>
             </Link>
           )}
+          
         </Nav>
       </Navbar.Collapse>
     </Navbar>

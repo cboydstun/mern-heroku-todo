@@ -1,13 +1,14 @@
+//import dependencies
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+
+//import context
 import { addTodo } from "../context/actions";
 import { useStateValue } from "../context/StateProvider";
 
 const TodoForm = () => {
   const [, dispatch] = useStateValue();
-
   const [text, setText] = useState("");
-
   const [important, setImportance] = useState(false);
 
   const submitHandler = (e) => {
@@ -16,6 +17,7 @@ const TodoForm = () => {
     setText("");
     setImportance(false);
   };
+
   return (
     <Form
       onSubmit={submitHandler}
@@ -40,6 +42,7 @@ const TodoForm = () => {
           label="Urgent"
         />
       </Form.Group>
+
       <Button variant="success" type="submit">
         Submit
       </Button>

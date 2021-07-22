@@ -1,15 +1,18 @@
+//import dependencies
 import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+
+//import context
 import { loadUser, login } from "../context/actions";
 import { useStateValue } from "../context/StateProvider";
-import { Redirect } from "react-router-dom";
 
 const Login = () => {
   const [state, dispatch] = useStateValue();
   const { error, token, authenticated } = state;
-
   const [password, setPassword] = useState("");
   const [email, setEmial] = useState("");
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (email && password) {
@@ -27,6 +30,7 @@ const Login = () => {
       type: "CLEAR_ERROR",
     });
   };
+
   useEffect(() => {
     setError();
     if (token) {
@@ -34,6 +38,7 @@ const Login = () => {
     }
     // eslint-disable-next-line
   }, [token, dispatch]);
+  
   return (
     <Container className="mt-5">
       <h3 className="text-center">Login</h3>

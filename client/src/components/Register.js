@@ -1,14 +1,16 @@
+//import dependencies
 import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+
+//import context
 import { loadUser, register } from "../context/actions";
 import { useStateValue } from "../context/StateProvider";
-import { Redirect } from "react-router-dom";
 
 const Register = () => {
   const [state, dispatch] = useStateValue();
   const { error, token, authenticated } = state;
-
-  const [email, setEmial] = useState("");
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -28,6 +30,7 @@ const Register = () => {
       });
     }
   };
+
   useEffect(() => {
     setError();
     if (token) {
@@ -53,6 +56,7 @@ const Register = () => {
           <p>{error}</p>
         </Alert>
       )}
+
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <Form.Label>Name</Form.Label>
@@ -67,7 +71,7 @@ const Register = () => {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
-            onChange={(e) => setEmial(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
             placeholder="Enter email"

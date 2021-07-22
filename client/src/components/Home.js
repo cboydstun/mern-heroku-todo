@@ -1,10 +1,15 @@
+//import dependencies
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+//import context
 import { loadTodos, loadUser } from "../context/actions";
 import { useStateValue } from "../context/StateProvider";
+
+//import components
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Home = ({ history }) => {
   const [state, dispatch] = useStateValue();
@@ -20,6 +25,7 @@ const Home = ({ history }) => {
     loadTodos(dispatch);
     // eslint-disable-next-line
   }, []);
+
   return (
     <Container className=" d-flex justify-content-center flex-column">
       <TodoForm></TodoForm>

@@ -1,5 +1,8 @@
+//import dependencies
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+
+//import context
 import { deleteTodo, updateTodo } from "../context/actions";
 import { useStateValue } from "../context/StateProvider";
 
@@ -16,6 +19,7 @@ const TodoItem = ({ todo }) => {
     setCompleted(todo.completed);
     setText(todo.text);
   };
+
   const checkBoxhandler = (e) => {
     if (e.target.name === "important") {
       setImportant(!important);
@@ -32,6 +36,7 @@ const TodoItem = ({ todo }) => {
       deleteTodo(dispatch, todo._id);
     }
   };
+
   const onChangeHandler = (e) => {
     setText(e.target.value);
   };
@@ -39,6 +44,7 @@ const TodoItem = ({ todo }) => {
   const submitHandler = (e) => {
     e.preventDefault();
   };
+
   return (
     <div className="todo-item mb-4 bg-dark rounded p-2 pr-md-5 pl-md-5 text-light">
       <Form onSubmit={submitHandler}>
@@ -55,6 +61,7 @@ const TodoItem = ({ todo }) => {
             type="text"
           />
         </Form.Group>
+      
         <div className="d-flex justify-content-between font-weight-bold flex-wrap">
           <Form.Check
             onChange={checkBoxhandler}
@@ -82,10 +89,12 @@ const TodoItem = ({ todo }) => {
           >
             {editing ? "Update" : "Delete"}
           </Button>
+          
           <Button onClick={onClickHandler} size="sm" variant="primary">
             {editing ? "Cancel" : "Edit"}
           </Button>
         </div>
+
       </Form>
     </div>
   );
